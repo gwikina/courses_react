@@ -1,0 +1,34 @@
+import React from 'react';
+import { Table, Button } from 'reactstrap';
+
+function Course (props) {
+  return (
+    <Table className="table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>name</th>
+          <th>descrition</th>
+          <th>details</th>
+          <th>department</th>
+          <th>college</th>
+        </tr>
+      </thead>
+      <tbody>
+      {props.list.map((element) => {
+                    return(
+                      <tr>
+                      <th scope="row"><Button color="secondary"> Edit </Button> </th>
+                      <td>{element.name}</td>
+                      <td>{element.desc}</td>
+                      <td>{element.details}</td>
+                      <td>{element.dept}</td>
+                      <td>{element.college}</td>
+                    </tr>)
+                })} 
+      </tbody>
+    </Table>
+  );
+}
+
+export default Course;
