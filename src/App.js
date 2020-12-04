@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button } from 'reactstrap';
+import { Container } from 'reactstrap';
 import Course from './Course';
 
 class App extends React.Component {
