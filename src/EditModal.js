@@ -1,15 +1,16 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Select} from 'reactstrap';
 
 class Edit extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             modal: false,   
-            cname: "",
-            cdesc: "",
-            cdetails: "",
-            cdept: "",  
+            cname: this.props.course.name,
+            cdesc: this.props.course.desc,
+            cdetails: this.props.course.details,
+            cdept: this.props.course.dept_id,  
+            selected: false
         }
         this.toggle = this.toggle.bind(this);
         this.handleCname = this.handleCname.bind(this);
@@ -42,11 +43,12 @@ class Edit extends React.Component {
         this.setState({
             cdept: event.target.value
         });
+
     }
 
     handleSubmit = (event) =>{
         event.preventDefault();
-        fetch('/coursedata/1', {
+        fetch('/coursedata/' + this.props.course.id, {
             method: 'PUT', 
             headers:{
                 'Accept': 'application/json', 
@@ -73,16 +75,16 @@ class Edit extends React.Component {
             <ModalHeader toggle={this.toggle}>Edit Course</ModalHeader>
             <ModalBody>
                 <p> <label> Course Name </label> </p>
-                <p><Input id="cname" onChange={this.handleCname} defaultValue={this.props.course.name}> </Input></p>
+                <p><Input id="cname" onChange={this.handleCname} defaultValue={this.state.cname}> </Input></p>
                 <p> <label> Course Description </label> </p>
-                <p><Input id="cdesc" onChange={this.handleCdesc} defaultValue={this.props.course.desc}/></p>
+                <p><Input id="cdesc" onChange={this.handleCdesc} defaultValue={this.state.cdesc}/></p>
                 <p> <label> Course Details </label> </p>
-                <p><Input id="cdet" onChange={this.handleCdetails} defaultValue={this.props.course.details}/></p>
+                <p><Input id="cdet" onChange={this.handleCdetails} defaultValue={this.state.cdetails}/></p>
                 <p> <label> Department </label> </p>
                 <p>
-                    <select name="dropdown" id="dropdown" defaultValue = {this.props.course.dept_id} Change={this.handleCdept}>
+                    <select name="dropdown" id="dropdown" onChange={this.handleCdept}>
                         <option value={1}>Software Engineering </option>
-                        <option value={2}>Computer Science</option>
+                        <option value={2} selected>Computer Science</option>
                         <option value={3}>Computer Engineering</option>
                         <option value={4}>Virology</option>
                     </select>
