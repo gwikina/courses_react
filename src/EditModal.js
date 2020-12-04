@@ -9,8 +9,8 @@ class Edit extends React.Component {
             cname: this.props.course.name,
             cdesc: this.props.course.desc,
             cdetails: this.props.course.details,
-            cdept: this.props.course.dept_id,  
-            selected: false
+            cdept: 1,  
+            deps: []
         }
         this.toggle = this.toggle.bind(this);
         this.handleCname = this.handleCname.bind(this);
@@ -63,7 +63,7 @@ class Edit extends React.Component {
         })
         .then(response => response.json())
         .then( 
-            alert("Success")
+            alert("You successfully edited a course. Refresh to see it!")
         )
     }
 

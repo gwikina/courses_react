@@ -14,6 +14,9 @@ class Add extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.handleCname = this.handleCname.bind(this);
     }
+      
+      
+   
       toggle(){
         this.setState({
             modal: !this.state.modal
@@ -43,7 +46,7 @@ class Add extends React.Component {
             cdept: event.target.value
         });
     }
-
+    
     handleSubmit = (event) =>{
         event.preventDefault();
         fetch('/coursedata/', {
@@ -61,7 +64,7 @@ class Add extends React.Component {
         })
         .then(response => response.json())
         .then( 
-            alert("Success")
+            alert("You successfully added a course. Refresh to see it!")
         )
     }
 
