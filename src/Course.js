@@ -1,8 +1,11 @@
 import React from 'react';
-import { Table, Button } from 'reactstrap';
+import Edit from './EditModal';
+import Add from './AddModal';
+import { Table } from 'reactstrap';
 
 function Course (props) {
   return (
+    <div>
     <Table className="table-striped">
       <thead>
         <tr>
@@ -18,7 +21,7 @@ function Course (props) {
       {props.list.map((element) => {
                     return(
                       <tr>
-                      <th scope="row"><Button color="secondary"> Edit </Button> </th>
+                      <th scope="row"><Edit course={element} /></th>
                       <td>{element.name}</td>
                       <td>{element.desc}</td>
                       <td>{element.details}</td>
@@ -28,6 +31,8 @@ function Course (props) {
                 })} 
       </tbody>
     </Table>
+    <Add />
+    </div>
   );
 }
 

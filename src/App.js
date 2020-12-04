@@ -51,11 +51,10 @@ class App extends React.Component {
   render(){
     return(
       <Container className="pt-5">
-      <div className="text-center h1 py-3"> Course List</div>
+      <div className="text-center h1 py-4"> Course List</div>
       
       <Course list={this.state.courses}> </Course>
 
-      <Button color="primary" className="ml-2"> Add </Button>
       </Container>
     );
   }

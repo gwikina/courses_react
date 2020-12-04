@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#cname, #cdesc, #cdet{
+  width: 100%;
+}
+select{
+  width: 100%;
+  padding: 5%;
+}
+
+::placeholder {
+  color: #000;
+}
