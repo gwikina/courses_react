@@ -13,13 +13,12 @@ class CourseData(Resource):
 class OneCourseData(Resource):
     def get(self, id):
     # NOTE: No need to replicate code; use the util function!
-        result = exec_get_all(f"SELECT Courses.*, Department.name, College.name FROM Courses INNER JOIN Department ON Courses.dept_id = Department.ID INNER JOIN College ON Department.ID = College.ID WHERE Course.id={id};");
+        result = exec_get_all(f"SELECT Courses.*, Department.name, College.name FROM Courses INNER JOIN Department ON Courses.dept_id = Department.ID INNER JOIN College ON Department.ID = College.ID WHERE Courses.id={id}");
         return result
 class UpdateCourseData(Resource):
     def put(self, id):
     # NOTE: No need to replicate code; use the util function!
         parser = reqparse.RequestParser()
-        parser.add_argument('course_id', type = int)
         parser.add_argument('new_name', type = str)
         parser.add_argument('new_desc', type = str)
         parser.add_argument('new_detail', type = str)
@@ -27,7 +26,6 @@ class UpdateCourseData(Resource):
 
 
         args = parser.parse_args()
-        course_id = args['course_id']
         new_name = args['new_name']
         new_desc = args['new_desc']
         new_detail = args['new_detail']
@@ -35,13 +33,13 @@ class UpdateCourseData(Resource):
 
         sql = f"""
                         Update Courses 
-                        SET name = %s
-                        SET c_desc = %s
-                        SET details = %s
-                        SET dept_id = %s
+                        SET name = %s,
+                        c_desc = %s,
+                        details = %s,
+                        dept_id = %s
                         WHERE id= %s;
                     """
-        return exec_commit(sql, (new_name, new_desc, new_detail, new_dept, course_id))
+        return exec_commit(sql, (new_name, new_desc, new_detail, new_dept, id))
 
 
 class AddCourseData(Resource):

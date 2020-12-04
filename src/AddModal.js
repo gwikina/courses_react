@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
-const cname = document.querySelector("#cname")
+
 class Add extends React.Component {
     constructor(props){
         super(props);
@@ -82,10 +82,10 @@ class Add extends React.Component {
                 <p> <label> Department </label> </p>
                 <p>
                     <select name="dropdown" id="dropdown" onChange={this.handleCdept}>
-                        <option value={0}>Software Engineering </option>
-                        <option value={1}>Computer Science</option>
-                        <option value={2}>Computer Engineering</option>
-                        <option value={3}>Virology</option>
+                        <option value={1}>Software Engineering </option>
+                        <option value={2}>Computer Science</option>
+                        <option value={3}>Computer Engineering</option>
+                        <option value={4}>Virology</option>
                     </select>
                 </p>
             </ModalBody>
