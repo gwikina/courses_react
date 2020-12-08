@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Select} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input} from 'reactstrap';
 
 class Edit extends React.Component {
     constructor(props){

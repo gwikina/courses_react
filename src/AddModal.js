@@ -71,7 +71,6 @@ class Add extends React.Component {
   render(){
     return (
         <div>
-        <p> {this.state.cname}</p>
         <Button onClick={this.toggle} color="primary"> Add </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader toggle={this.toggle}>Add Course</ModalHeader>
